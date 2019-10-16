@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+//vant用到的组件的引入
+import { Tabbar, TabbarItem } from 'vant';
+Vue.use(Tabbar).use(TabbarItem);
+
 //该组件在全局使用,需要在全局注册
 import pageTitle from './components/pageTitle'
 //注册全局组件

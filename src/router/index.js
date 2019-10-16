@@ -5,6 +5,9 @@ import Router from 'vue-router'
 //引入路由
 import index from '@/pages/index'
 import movieDetail from '@/pages/movieDetail'
+import movie from '@/pages/movie'
+import news from '@/pages/news'
+import mine from '@/pages/mine'
 
 Vue.use(Router)
 
@@ -26,6 +29,6 @@ export default new Router({
       path: '/movieDetail',
       name: 'movieDetail',
       component: movieDetail
-    }
+    },
   ]
 })

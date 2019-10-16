@@ -1,61 +1,79 @@
 <template>
   <div>
-    <div class="top">
-      <page-title >猫眼电影</page-title>
-      <ul class="topNav">
-        <li :class="[showHot==1?'active':'']" @click="showHot=1">正在热映</li>
-        <li :class="[showHot==0?'active':'']" @click="showHot=0">即将上映</li>
-      </ul>
-    </div>
-    <div class="main">
-      <hoting v-show="showHot==1"></hoting>
-      <comming v-show="showHot==0"></comming>
-    </div>
-
+    <van-tabbar v-model="active" inactive-color="#a8a8a8" active-color="#e54847">
+      <van-tabbar-item v-for="(item,index) in tabbars" :key="index">
+        <span>{{item.title}}</span>
+        <img
+          slot="icon"
+          slot-scope="props"
+          :src="props.active ? item.icon.active : item.icon.normal"
+        >
+      </van-tabbar-item>
+    </van-tabbar>
+    <movie v-if="showNo==0"></movie>
+    <news v-else-if="showNo==1"></news>
+    <mine v-else="showNo==2"></mine>
   </div>
 </template>
 
 <script>
-import hoting from '@/components/hoting'
-import comming from '@/components/comming'
+import movie from './movie';
+import news from './news';
+import mine from './mine';
 export default {
-  name: "index",
-  components: {
-    hoting,comming
-  },
+  name:"index",
   data() {
     return {
-      showHot:1
+      active:0,
+      showNo:0,
+      tabbars:[
+        {
+          title:"电影",
+          icon:{
+            normal:require("../assets/img/movie-normal.png"),
+            active:require("../assets/img/movie-active.png"),
+          },
+        },
+        {
+          title:"资讯",
+          icon:{
+            normal:require("../assets/img/news-normal.png"),
+            active:require("../assets/img/news-active.png"),
+          },
+        },
+        {
+          title:"我的",
+          icon:{
+            normal:require("../assets/img/mine-normal.png"),
+            active:require("../assets/img/mine-active.png"),
+          },
+        },
+      ],
     }
-  }
-};
+  },
+  methods: {
+    
+  },
+  components:{
+    movie,news,mine,
+  },
+  updated() {
+    if (this.active == 0) {
+      this.showNo=0;
+    } else if (this.active == 1) {
+      this.showNo=1;
+    } else if (this.active == 2) {
+      this.showNo=2;
+    } 
+  },
+}
 </script>
 
 <style scoped>
-.top{
-  width: 100%;
-  position: fixed;
-  z-index: 9;
-}
-.topNav{
-  height: 44px;
-  line-height: 44px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-  background-color: #fff;
-}
-.topNav li{
-  height: 100%;
-  cursor: pointer;
-}
-.active{
-  color: rgb(229, 72, 71);
-  border-bottom: 2px solid rgb(229, 72, 71);
-}
-.main{
-  padding-top: 100px;
-}
+  .van-tabbar{
+    background:#f3f3f3;
+  }
+  .van-tabbar-item--active{
+    border-top:1px solid #e54847;
+  }
 </style>
