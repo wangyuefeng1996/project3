@@ -56,5 +56,6 @@ export default {
 }
 .main{
   padding-top: 100px;
+  padding-bottom: 55px;
 }
 </style>

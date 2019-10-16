@@ -12,7 +12,7 @@
     </van-tabbar>
     <movie v-if="showNo==0"></movie>
     <news v-else-if="showNo==1"></news>
-    <mine v-else="showNo==2"></mine>
+    <mine v-else></mine>
   </div>
 </template>
 
