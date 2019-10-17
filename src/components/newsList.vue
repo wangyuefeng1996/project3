@@ -38,13 +38,13 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 2%;
-  border-top: 1px solid #ddd;
+  border: 1px solid #999;
+  border-radius: 5%;
+  margin-bottom: 1%;
 }
 .top{
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 2%;
 }
 .news-img img{
   width: 160px;
@@ -55,12 +55,14 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  padding: 2%;
 }
 
 .other{
   display: flex;
   justify-content: space-around;
+  color: #aaa;
+  font-size: 14px;
 }
 
 .title{
